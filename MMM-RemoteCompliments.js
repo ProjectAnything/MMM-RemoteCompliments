@@ -11,7 +11,8 @@ Module.register("MMM-RemoteCompliments", {
 		fadeSpeed: 4000,
 		updateInterval: 10000,
 		imageMaxWidth: '500px',
-		imageMaxHeight: '500px'
+		imageMaxHeight: '500px',
+		textMaxWidth: '',
 	},
 
 	/**
@@ -47,6 +48,7 @@ Module.register("MMM-RemoteCompliments", {
 		self.fadeSpeed = self.config.fadeSpeed;
 		self.imageMaxWidth = self.config.imageMaxWidth;
 		self.imageMaxHeight = self.config.imageMaxHeight;
+		self.maxWidth = self.config.textMaxWidth;
 		// Start node_helper fetching process.
 		self.sendNotification('START_FETCHING', self.config.updateInterval);
 	},
@@ -240,6 +242,7 @@ Module.register("MMM-RemoteCompliments", {
 		compliment.id = self.name + "-compliment";
 		compliment.style.margin = '0px';
 		compliment.style.paddingBottom = '15px';
+		compliment.style.maxWidth = self.maxWidth;
 		compliment.textContent = self.compliment;
 		// Add compliment to wrapper.
 		wrapper.appendChild(compliment);
